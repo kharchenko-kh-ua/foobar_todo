@@ -1,0 +1,26 @@
+@charset "UTF-8";
+
+@mixin link($color) {
+    display: inline-block;
+    color: $color;
+    padding: 4px 24px;
+    border: 1px solid blue;
+    background-color: #ffffff;
+    text-decoration: dotted;
+    text-shadow: rgba(white, 0.6) 0 1px 0;
+}
+
+@mixin button($bg-color, $font-color) {
+	text-decoration: none;
+    font-weight: bold;
+    border: 1px solid blue;
+    padding: 4px 14px;
+	box-shadow: 1px 1px 3px 1px #959595;
+	background-color: $bg-color;
+	color: $font-color;
+    cursor: pointer;
+
+    &:hover {
+        background-color: lighten($bg-color, 10%);
+    }
+}

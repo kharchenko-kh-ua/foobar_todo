@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block extra_js %}
+<script src="{{ STATIC_URL }}js/sort_entries.js"></script>
+{% endblock %}
+
+{% block title %}
+Todo/entry edit
+{% endblock %}
+
+{% block nav %}
+>> <a href="/">Main</a> >> Todo/entry edit
+{% endblock %}
+
+{% block article %}
+{% if formset %}
+    <h1>{{ todo.name }}</h1>
+    <form id="formset" action="." method="post">
+    {% csrf_token %}
+    {{ formset.management_form }}
+        <table id="formset_table" border="2px">
+            {% for form in formset %}
+            <tr>
+                <td>{{ form.as_p }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    <button type="submit">Save changes</button>
+    </form>
+{% endif %}
+
+{% if entry_form %}
+    <h2>New entry</h2>
+    <form action="{% url 'organizer:new_entry' %}" method="post">
+        {% csrf_token %}
+        <table border="2px">
+            {{ entry_form.as_table }}
+        </table>
+    <button type="submit">Create new entry</button>
+    </form>
+{% endif %}
+{% endblock %}

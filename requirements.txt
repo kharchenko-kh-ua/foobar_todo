@@ -1,0 +1,9 @@
+#project requirements
+django==1.8
+celery==3.1.18
+libsass==0.5.0
+oauthlib==0.7.2
+python-social-auth==0.1.26
+redis==2.10.3
+requests==2.5.1
+requests-oauthlib==0.3.1

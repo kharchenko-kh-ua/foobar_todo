@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Login
+{% endblock %}
+
+{% block nav %}
+>><a href="/">Main</a> >> Login page
+{% endblock %}
+
+{% block article %}
+
+<form action="{% url 'accounts:login' %}" method="post">
+    {% csrf_token %}
+    <table>
+    <tr>
+        <td>{{ form.username.label_tag }}</td>
+        <td>{{ form.username }}</td>
+    </tr>
+    <tr>
+        <td>{{ form.password.label_tag }}</td>
+        <td>{{ form.password }}</td>
+    </tr>
+    </table>
+
+    <button type="submit">Log in</button>
+    <input type="hidden" name="next" value="{{ next }}" />
+</form>
+
+<div class="social-auth">
+    <div class="social-button-container">
+        <a class="social-login" href="{% url 'social:begin' 'vk-oauth2' %}?next=/">
+            <img src="{{ STATIC_URL }}img/vk.png">&nbsp;Sing in with vk</a>
+    </div>
+
+    <div class="social-button-container">
+        <a class="social-login" href="{% url 'social:begin' 'facebook' %}?next=/">
+            <img src="{{ STATIC_URL }}img/facebook.jpg">&nbsp;Sing in with facebook
+        </a>
+    </div>
+
+    <div class="social-button-container">
+        <a class="social-login" href="{% url 'social:begin' 'google-oauth2' %}?next=/">
+            <img src="{{ STATIC_URL }}img/google.png">&nbsp;Sing in with google
+        </a>
+    </div>
+</div>
+
+Have no account? <a href="{% url 'accounts:register' %}">Sign up</a>
+
+{% endblock %}

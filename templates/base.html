@@ -1,0 +1,55 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+
+    <title>{% block title %}{% endblock %} | foobar todo</title>
+<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/base.min.css">
+
+{% block extra_css %}
+{% endblock %}
+
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<script src="{{ STATIC_URL }}js/base.js"></script>
+{% block extra_js %}
+{% endblock %}
+
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+            <div class="logo">
+                <a href="/"><img src="{{ STATIC_URL }}img/logo.png"></a>
+            </div>
+
+            <div class="management">
+                <div class="switch-lang">
+                    <a href="">RU</a><a href="">UA</a><a href="">EN</a>
+                </div>
+                <div class="account-info">
+                    {% if user.is_authenticated %}
+                        You logged in as {{ user }} | <a href="{% url 'accounts:logout' %}">Log out</a>
+                    {% else %}
+                        <a href="{% url 'accounts:login' %}">Log in</a>
+                    {% endif %}
+                </div>
+            </div>
+        </header>
+
+        <nav>{% block nav %}{% endblock %}</nav>
+
+        <main>
+            <article>
+                {% block article %}
+                {% endblock %}
+            </article>
+        </main>
+
+        <footer>
+            Created by Dmitriy Kharchenko. 2015
+        </footer>
+    </div>
+</body>
+</html>

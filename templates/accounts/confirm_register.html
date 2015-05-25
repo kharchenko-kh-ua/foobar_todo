@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Confirm register
+{% endblock %}
+
+{% block nav %}
+>> <a href="/">Main</a> >> Confirm Register
+{% endblock %}
+
+{% block article %}
+{% if message %}
+    {{ message }} <a href="{% url 'accounts:login' %}">Log in</a>
+{% endif %}
+{% endblock %}

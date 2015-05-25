@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Main
+{% endblock %}
+
+{% block nav %}
+>> This is the main page
+{% endblock %}
+
+{% block article %}
+    {% if user.is_authenticated %}
+        {% if todo_lists %}
+            <h1>Your todo lists</h1>
+            {% for todo_list in todo_lists %}
+            <a href="{% url 'organizer:todo_edit' name=todo_list.name %}">
+                <div class="todo-list">
+                    <h2>{{ todo_list.name }}</h2>
+                    <ul>
+                        {% for entry in todo_list.last_entries %}
+                            <li>{{ entry }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </a>
+            {% endfor %}
+        {% else %}
+            <h1>You have no any todo. Create one?</h1>
+        {% endif %}
+        <div class="add-new">
+            <a href="{% url 'organizer:new_todo' %}">Add new todo</a>
+        </div>
+    {% else %}
+    <h1>You must sign in to use todo lists</h1>
+    <a href="{% url 'accounts:login' %}">Sign in</a>
+    {% endif %}
+{% endblock %}
