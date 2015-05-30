@@ -13,7 +13,7 @@ Main
         {% if todo_lists %}
             <h1>Your todo lists</h1>
             {% for todo_list in todo_lists %}
-            <a href="{% url 'organizer:todo_edit' name=todo_list.name %}">
+            <a href="{% url 'organizer:todo_edit' todo_list.name %}">
                 <div class="todo-list">
                     <h2>{{ todo_list.name }}</h2>
                     <ul>

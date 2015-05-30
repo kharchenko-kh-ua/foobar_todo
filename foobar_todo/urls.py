@@ -8,12 +8,12 @@ urlpatterns = [
     url('', include('social.apps.django_app.urls', namespace='social')),
 
     url(r'^$', 'foobar_todo.views.index', name='index'),
-    url(r'^accounts/', include(
-        'apps.accounts.urls',
-        app_name='accounts',
-        namespace='accounts')),
-    url(r'organizer/', include(
-        'apps.organizer.urls',
-        app_name='organizer',
-        namespace='organizer')),
+    url(r'^accounts/', include('apps.accounts.urls',
+                               app_name='accounts',
+                               namespace='accounts'),
+        ),
+    url(r'organizer/', include('apps.organizer.urls',
+                               app_name='organizer',
+                               namespace='organizer'),
+        ),
 ]

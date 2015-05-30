@@ -40,6 +40,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_nose',
     'social.apps.django_app.default',
     'apps.accounts',
     'apps.organizer',
@@ -123,6 +124,8 @@ STATICFILES_DIRS = (
 TEMPLATE_DIRS = (
     os.path.join(BASE_DIR,  'templates'),
 )
+
+TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
 
 BROKER_URL = 'redis://localhost:6379/0'
 

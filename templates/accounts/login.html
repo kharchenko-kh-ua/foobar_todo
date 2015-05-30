@@ -16,12 +16,22 @@ Login
     <tr>
         <td>{{ form.username.label_tag }}</td>
         <td>{{ form.username }}</td>
+        {% if form.errors %}
+            <td>{{ form.errors.username }}</td>
+        {% endif %}
     </tr>
     <tr>
         <td>{{ form.password.label_tag }}</td>
         <td>{{ form.password }}</td>
+        {% if form.errors %}
+            <td>{{ form.errors.password }}</td>
+        {% endif %}
     </tr>
     </table>
+
+    {% if form.errors %}
+        <p>Authentication failed! Please try again.</p>
+    {% endif %}
 
     <button type="submit">Log in</button>
     <input type="hidden" name="next" value="{{ next }}" />
