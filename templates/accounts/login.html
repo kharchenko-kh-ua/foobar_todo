@@ -30,7 +30,7 @@ Login
     </table>
 
     {% if form.errors %}
-        <p>Authentication failed! Please try again.</p>
+        <p>Authentication failed! Please try again.</p>{{ form.errors }}
     {% endif %}
 
     <button type="submit">Log in</button>

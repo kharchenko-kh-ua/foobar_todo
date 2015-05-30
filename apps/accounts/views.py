@@ -8,13 +8,13 @@ from .models import AccountConfirmation
 
 
 def register(request):
+    form = RegisterForm()
     if request.method == 'POST':
         form = RegisterForm(request.POST)
         if form.is_valid():
             form.save()
             request.session['confirm_register'] = True
             return HttpResponseRedirect(reverse('accounts:confirm_register'))
-    form = RegisterForm()
     context = {
         'form': form
     }
